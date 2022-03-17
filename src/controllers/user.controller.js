@@ -6,13 +6,13 @@ const userController = {
     const users = getJSON();
     const currentUser = User.find(userId);
     currentUser.imageUrl = url;
-    const index = users.findIndex(({id}) => id === userId);
-    users[index] = {...users[index], ...currentUser};
+    const index = users.findIndex(({ id }) => id === userId);
+    users[index] = { ...users[index], ...currentUser };
     saveJSON(users);
   },
-  getProfilePicture: function () {
-    const data = getJSON();
-    return data.profilePicture || "";
+  getProfilePicture: function (userId) {
+    const users = getJSON();
+    return users[users.findIndex(({ id }) => id === userId)];
   },
 };
 

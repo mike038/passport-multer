@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("passport");
 
 const userController = require("../controllers/user.controller");
 const { uploadLocal } = require("../utils/multer");
@@ -23,7 +22,7 @@ router.post(
 );
 
 router.get("/getProfilePicture", (req, res) => {
-  res.send({ url: userController.getProfilePicture() });
+  res.send(userController.getProfilePicture(req.user.id));
 });
 
 module.exports = router;
